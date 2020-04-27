@@ -1,5 +1,6 @@
 self.addEventListener("fetch", event => {
   let url = new URL(event.request.url);
+  console.log("Intercepted request from URL: ", url);
   if (url.pathname.startsWith("/test")) {
     event.respondWith(new Response("Hello from worker!"));
   }
