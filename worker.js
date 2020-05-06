@@ -3,7 +3,7 @@ self.addEventListener("fetch", event => {
   console.log("Intercepted request from URL: ", url);
   if (url.pathname.startsWith("/test")) {
     var myHeaders = new Headers();
-    myHeaders.append('Access-Control-Allow-Origin', '*');
+    //myHeaders.append('Access-Control-Allow-Origin', '*');
     var init = {headers: myHeaders};
     event.respondWith(new Response("Hello from worker!", init));
   }
