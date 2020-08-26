@@ -11,7 +11,8 @@ self.addEventListener("fetch", event => {
     console.log("Loading .wbn...");
     fetch(event.request).then(function (response) {
       var myHeaders = new Headers();
-      myHeaders.append('Content-Type', 'application/webbundle;v=1');
+      myHeaders.append('Access-Control-Allow-Origin', '*');
+      myHeaders.append('Content-Type', 'application/webbundle');
       var init = {headers: myHeaders};
       return new Response(response.body, init);
     });
