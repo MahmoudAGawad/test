@@ -10,8 +10,10 @@ self.addEventListener("fetch", event => {
   if(url.pathname.includes(".wbn")) {
     console.log("Loading .wbn...");
     fetch(event.request).then(function (response) {
-        response.headers.append('Content-Type', 'application/webbundle;v=1');
-        event.respondWith(response);
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/webbundle;v=1');
+      var init = {headers: myHeaders};
+      event.respondWith(new Response(response.body, init));
     });
   }
 });
