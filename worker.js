@@ -9,8 +9,9 @@ self.addEventListener("fetch", event => {
   }
   if(url.pathname.includes(".wbn")) {
     console.log("Loading .wbn...");
-    var response = await fetch(url);
-    response.headers.append('Content-Type', 'application/webbundle;v=1');
-    event.respondWith(response);
+    fetch(event.request).then(function (response) {
+        response.headers.append('Content-Type', 'application/webbundle;v=1');
+        event.respondWith(response);
+    });
   }
 });
