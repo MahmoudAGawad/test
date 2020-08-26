@@ -13,7 +13,7 @@ self.addEventListener("fetch", event => {
       var myHeaders = new Headers();
       myHeaders.append('Content-Type', 'application/webbundle;v=1');
       var init = {headers: myHeaders};
-      event.respondWith(new Response(response.body, init));
+      return new Response(response.body, init);
     });
   }
 });
