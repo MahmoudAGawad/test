@@ -7,4 +7,9 @@ self.addEventListener("fetch", event => {
     var init = {headers: myHeaders};
     event.respondWith(new Response("Hello from worker!", init));
   }
+  if(url.pathname.contains(".wbn")) {
+    var response = await fetch(url);
+    response.headers.append('Content-Type', 'application/webbundle;v=1');
+    event.respondWith(response);
+  }
 });
